@@ -134,12 +134,11 @@ abstract class EloquentRepository
     }
     
     /**
-     * @param array $with
      * @return \Illuminate\Database\Eloquent\Builder
      * */
-    public function query($with = [])
+    public function query()
     {
-        return $this->model->with($with);
+        return $this->model;
     }
     
     public function exists(array $conditions)
