@@ -1,0 +1,28 @@
+{
+    "name": "theanh/laravel-repository",
+    "description": "Laravel repository base",
+    "keywords": [
+        "laravel repository",
+        "repository for laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "The Anh Dang",
+          "email": "dangtheanh16@gmail.com",
+          "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    },
+    "require-dev": {
+      "laravel/laravel": "^6.0 | ^7.0 | ^8.0",
+      "phpunit/phpunit": "6.0 | 7.0 | 7.5 | 8.4 | ^8.5 | ^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+          "Lararepo\\": "src/"
+        }
+    }
+}
