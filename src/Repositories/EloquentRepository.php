@@ -1,6 +1,6 @@
 <?php
 
-namespace Lararepo\Repositories;
+namespace Theanh\Lararepo\Repositories;
 
 abstract class EloquentRepository
 {
@@ -26,12 +26,12 @@ abstract class EloquentRepository
      * Or false if not exists
      *
      * @param int|\Illuminate\Database\Eloquent\Model $id
+     * @param array $columns
      * @return false|\Illuminate\Database\Eloquent\Model
      */
-    public function find($id)
+    public function find($id, $columns = ['*'])
     {
-        return is_numeric($id) ? $this->model->find($id) :
-            $id;
+        return is_numeric($id) ? $this->model->find($id, $columns) : $id;
     }
     
     /**
@@ -39,11 +39,12 @@ abstract class EloquentRepository
      * Or fail if not exists
      *
      * @param int|\Illuminate\Database\Eloquent\Model $id
+     * @param array $columns
      * @return \Illuminate\Database\Eloquent\Model|mixed
      */
-    public function findOrFail($id)
+    public function findOrFail($id, $columns = ['*'])
     {
-        return is_numeric($id) ? $this->model->findOrFail($id) :
+        return is_numeric($id) ? $this->model->findOrFail($id, $columns) :
             $id;
     }
     
