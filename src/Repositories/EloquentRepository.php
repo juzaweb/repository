@@ -16,9 +16,9 @@ abstract class EloquentRepository
     
     abstract public function model();
     
-    public function setModel($model)
+    public function newModel()
     {
-        $this->model = $model;
+        return (new $this->model());
     }
     
     /**
