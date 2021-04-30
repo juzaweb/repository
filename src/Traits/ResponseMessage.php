@@ -1,6 +1,6 @@
 <?php
 
-namespace Theanh\Lararepo\Traits;
+namespace Tadcms\Lararepo\Traits;
 
 trait ResponseMessage
 {
@@ -9,6 +9,10 @@ trait ResponseMessage
         if (!is_array($data)) {
             $data = [$data];
         }
+    
+        if (request()->has('redirect')) {
+            $data['redirect'] = request()->input('redirect');
+        }
         
         return response()->json([
             'status' => $status,
@@ -16,26 +20,17 @@ trait ResponseMessage
         ]);
     }
     
-    protected function success($message, $redirect = null)
+    protected function success($message)
     {
         return $this->response([
-            'message' => trans($message),
-            'redirect' => $redirect,
+            'message' => $message,
         ], true);
     }
     
-    protected function error($message, $redirect = null)
+    protected function error($message)
     {
         return $this->response([
-            'message' => trans($message),
-            'redirect' => $redirect,
+            'message' => $message,
         ], false);
-    }
-    
-    protected function redirect($redirect)
-    {
-        return $this->response([
-            'redirect' => $redirect,
-        ], true);
     }
 }

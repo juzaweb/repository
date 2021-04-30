@@ -1,6 +1,6 @@
 <?php
 
-namespace Theanh\Lararepo\Repositories;
+namespace Tadcms\Lararepo\Repositories;
 
 abstract class EloquentRepository
 {
@@ -55,7 +55,8 @@ abstract class EloquentRepository
      * @param array $conditions
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function firstOrNew(array $conditions) {
+    public function firstOrNew(array $conditions)
+    {
         return $this->model->firstOrNew($conditions);
     }
     

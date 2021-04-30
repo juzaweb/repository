@@ -1,11 +1,11 @@
 <?php
 
-namespace Theanh\Lararepo;
+namespace Tadcms\Lararepo;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Theanh\Lararepo\Traits\ResponseMessage;
+use Tadcms\Lararepo\Traits\ResponseMessage;
 
 class Controller extends BaseController
 {

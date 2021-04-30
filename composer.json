@@ -1,5 +1,6 @@
 {
-    "name": "theanh/laravel-repository",
+    "name": "tadcms/repository",
+    "version": "1.0.1",
     "description": "Laravel repository base",
     "keywords": [
         "laravel repository",
@@ -23,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Theanh\\Lararepo\\": "src/"
+          "Tadcms\\Lararepo\\": "src/"
         }
     }
 }
