@@ -1,6 +1,6 @@
 <?php
 
-namespace Tadcms\Lararepo\Repositories;
+namespace Tadcms\Repository\Repositories;
 
 abstract class EloquentRepository
 {
