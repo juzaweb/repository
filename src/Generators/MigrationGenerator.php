@@ -29,7 +29,7 @@ class MigrationGenerator extends Generator
      */
     public function getBasePath()
     {
-        return base_path() . '/database/migrations/';
+        return base_path('packages/system/databases/migrations');
     }
 
 

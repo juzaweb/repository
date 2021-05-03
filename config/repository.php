@@ -228,17 +228,17 @@ return [
     |
     */
     'generator'  => [
-        'basePath'      => app()->path(),
-        'rootNamespace' => 'App\\',
+        'basePath'      => base_path('packages/system/src'),
+        'rootNamespace' => 'Tadcms\\System\\',
         'stubsOverridePath' => app()->path(),
         'paths'         => [
-            'models'       => 'Entities',
+            'models'       => 'Models',
             'repositories' => 'Repositories',
             'interfaces'   => 'Repositories',
             'transformers' => 'Transformers',
             'presenters'   => 'Presenters',
             'validators'   => 'Validators',
-            'controllers'  => 'Http/Controllers',
+            'controllers'  => 'Controllers',
             'provider'     => 'RepositoryServiceProvider',
             'criteria'     => 'Criteria'
         ]

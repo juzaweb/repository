@@ -39,13 +39,13 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands('Tadcms\Repository\Generators\Commands\RepositoryCommand');
-        $this->commands('Tadcms\Repository\Generators\Commands\TransformerCommand');
+        /*$this->commands('Tadcms\Repository\Generators\Commands\TransformerCommand');
         $this->commands('Tadcms\Repository\Generators\Commands\PresenterCommand');
         $this->commands('Tadcms\Repository\Generators\Commands\EntityCommand');
         $this->commands('Tadcms\Repository\Generators\Commands\ValidatorCommand');
         $this->commands('Tadcms\Repository\Generators\Commands\ControllerCommand');
         $this->commands('Tadcms\Repository\Generators\Commands\BindingsCommand');
-        $this->commands('Tadcms\Repository\Generators\Commands\CriteriaCommand');
+        $this->commands('Tadcms\Repository\Generators\Commands\CriteriaCommand');*/
         $this->app->register('Tadcms\Repository\Providers\EventServiceProvider');
     }
 

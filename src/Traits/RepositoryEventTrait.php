@@ -29,8 +29,25 @@ trait RepositoryEventTrait
     {
     }
 
-    public function entityCreating(RepositoryInterface $repository, array $model)
+    public function entityCreating(RepositoryInterface $repository, array $attributes)
     {
+    }
 
+    public function entityCreated(
+        RepositoryInterface $repository,
+        Model $model,
+        array $attributes
+    ) {
+    }
+
+    public function entityUpdating(RepositoryInterface $repository, Model $model)
+    {
+    }
+
+    public function entityUpdated(
+        RepositoryInterface $repository,
+        Model $model,
+        array $attributes
+    ) {
     }
 }

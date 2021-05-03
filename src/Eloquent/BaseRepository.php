@@ -26,6 +26,7 @@ use Tadcms\Repository\Traits\RepositoryEventTrait;
 /**
  * Class BaseRepository
  * @package Tadcms\Repository\Eloquent
+ * @method Builder query()
  * @author Anderson Andrade <contato@andersonandra.de>
  */
 abstract class BaseRepository implements RepositoryInterface, RepositoryCriteriaInterface
@@ -634,7 +635,6 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     /**
      * Save a new entity in repository
      *
-     * @throws ValidatorException
      * @throws RepositoryException
      *
      * @param array $attributes
@@ -659,12 +659,14 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         }
 
         event(new RepositoryEntityCreating($this, $attributes));
+        $this->entityCreating($this, $attributes);
 
         $model = $this->model->newInstance($attributes);
         $model->save();
         $this->resetModel();
 
         event(new RepositoryEntityCreated($this, $model));
+        $this->entityCreated($this, $model, $attributes);
 
         return $this->parserResult($model);
     }
@@ -672,7 +674,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     /**
      * Update a entity in repository by id
      *
-     * @throws ValidatorException
+     * @throws RepositoryException
      *
      * @param array $attributes
      * @param       $id
@@ -708,6 +710,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         $model = $this->model->findOrFail($id);
 
         event(new RepositoryEntityUpdating($this, $model));
+        $this->entityUpdating($this, $model);
 
         $model->fill($attributes);
         $model->save();
@@ -716,6 +719,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         $this->resetModel();
 
         event(new RepositoryEntityUpdated($this, $model));
+        $this->entityUpdated($this, $model, $attributes);
 
         return $this->parserResult($model);
     }
@@ -723,7 +727,6 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     /**
      * Update or Create an entity in repository
      *
-     * @throws ValidatorException
      * @throws RepositoryException
      *
      * @param array $attributes
@@ -752,7 +755,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         $this->resetModel();
 
         event(new RepositoryEntityUpdated($this, $model));
-
+        $this->entityUpdated($this, $model, $attributes);
 
         return $this->parserResult($model);
     }
@@ -899,6 +902,20 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     public function orderBy($column, $direction = 'asc')
     {
         $this->model = $this->model->orderBy($column, $direction);
+
+        return $this;
+    }
+
+    /**
+     * Set the "offset" value of the query.
+     *
+     * @param int $offset
+     *
+     * @return $this
+     */
+    public function offset($offset)
+    {
+        $this->model = $this->model->offset($offset);
 
         return $this;
     }

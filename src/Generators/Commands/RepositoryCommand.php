@@ -53,7 +53,8 @@ class RepositoryCommand extends Command
      * @see fire()
      * @return void
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 

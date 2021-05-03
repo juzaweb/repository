@@ -39,7 +39,8 @@ class EntityCommand extends Command
      * @see fire()
      * @return void
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 
@@ -96,7 +97,6 @@ class EntityCommand extends Command
         ]);
     }
 
-
     /**
      * The array of command arguments.
      *
@@ -113,7 +113,6 @@ class EntityCommand extends Command
             ],
         ];
     }
-
 
     /**
      * The array of command options.
